@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Просмотр заявок</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .request-container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        .request {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* Align items to the start */
+        }
+        .request-info {
+            flex-grow: 1;
+        }
+        .request-buttons {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            margin-left: 10px;
+        }
+        .request-button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            margin-bottom: 5px; /* Space between buttons */
+        }
+        .request-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Список заявок на расчёт</h2>
+
+    <div class="request-container" id="request1">
+        <div class="request">
+            <div class="request-info">
+                <strong>Пользователь:</strong> Иван Иванов<br>
+                <strong>Email:</strong> ivan@example.com<br>
+                <strong>Цена:</strong> <span id="price1">не установлена</span>
+            </div>
+            <div class="request-buttons">
+                <button class="request-button" onclick="navigateToProcess('request1')">Установить цену</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="request-container" id="request2">
+        <div class="request">
+            <div class="request-info">
+                <strong>Пользователь:</strong> Мария Петрова<br>
+                <strong>Email:</strong> maria@example.com<br>
+                <strong>Цена:</strong> <span id="price2">1500 руб.</span>
+            </div>
+            <div class="request-buttons">
+                <button class="request-button" onclick="navigateToProcess('request2')">Изменить цену</button>
+                <button class="request-button" onclick="sendResult('price2')">Отправить результат</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="request-container" id="request3">
+        <div class="request">
+            <div class="request-info">
+                <strong>Пользователь:</strong> Алексей Смирнов<br>
+                <strong>Email:</strong> alexey@example.com<br>
+                <strong>Цена:</strong> <span id="price3">не установлена</span>
+            </div>
+            <div class="request-buttons">
+                <button class="request-button" onclick="navigateToProcess('request3')">Установить цену</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="request-container" id="request4">
+        <div class="request">
+            <div class="request-info">
+                <strong>Пользователь:</strong> Ольга Кузнецова<br>
+                <strong>Email:</strong> olga@example.com<br>
+                <strong>Цена:</strong> <span id="price4">2500 руб.</span>
+            </div>
+            <div class="request-buttons">
+                <button class="request-button" onclick="navigateToProcess('request4')">Изменить цену</button>
+                <button class="request-button" onclick="sendResult('price4')">Отправить результат</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="request-container" id="request5">
+        <div class="request">
+            <div class="request-info">
+                <strong>Пользователь:</strong> Дмитрий Сидоров<br>
+                <strong>Email:</strong> dmitry@example.com<br>
+                <strong>Цена:</strong> <span id="price5">не установлена</span>
+            </div>
+            <div class="request-buttons">
+                <button class="request-button" onclick="navigateToProcess('request5')">Установить цену</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function navigateToProcess(requestId) {
+            const price = document.getElementById(`price${requestId.charAt(requestId.length - 1)}`).innerText;
+            const url = `processRequest.html?requestId=${requestId}&price=${encodeURIComponent(price)}`;
+            window.location.href = url; // Redirect to the process request page
+        }
+
+        function sendResult(priceId) {
+            const email = document.getElementById(priceId).innerText;
+            alert("Результат отправлен");
+        }
+    </script>
+</body>
+</html>

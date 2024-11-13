@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Установка цены заявки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .input-field {
+            margin-bottom: 15px;
+        }
+        .input-field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-field input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+        .images-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .image-container {
+        width: calc(33% - 10px);
+        box-sizing: border-box;
+      }
+        .image-item {
+            margin: 10px;
+            text-align: center;
+        }
+        .image-item img {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Установка цены заявки</h2>
+    <div class="form-container">
+        <div class="input-field">
+            <label for="requestId">ID Заявки:</label>
+            <input type="text" id="requestId" disabled>
+        </div>
+        
+        <!-- Images section moved here -->
+        <div class="images-container">
+            <div class="image-item">
+                <img src="./Lift/Двери/texture11.png" alt="Двери">
+                <p>Двери</p>
+            </div>
+            <div class="image-item">
+                <img src="./Lift/Стены/texture10.png" alt="Стены">
+                <p>Стены</p>
+            </div>
+            <div class="image-item">
+                <img src="./Lift/Потолок/texture15.png" alt="Потолок">
+                <p>Потолок</p>
+            </div>
+            <div class="image-item">
+                <img src="./Lift/Пол/texture12.png" alt="Пол">
+                <p>Пол</p>
+            </div>
+            <div class="image-item">
+                <img src="./Lift/Табло/texture17.png" alt="Табло">
+                <p>Табло</p>
+            </div>
+        </div>
+
+        <div class="input-field">
+            <label>Размер лифта:</label>
+            <input type="text" value="40x40" disabled>
+        </div>
+        
+        <div class="input-field">
+            <label for="currentPrice">Текущая цена:</label>
+            <input type="text" id="currentPrice" disabled>
+        </div>
+        <div class="input-field">
+            <label for="newPrice">Введите новую цену:</label>
+            <input type="text" id="newPrice" placeholder="Например, 2000 руб.">
+        </div>
+        <button class="submit-button" id="setPriceButton">Установить цену</button>
+    </div>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const requestId = urlParams.get('requestId');
+        const price = urlParams.get('price');
+
+        // Set the input fields with the data
+        document.getElementById('requestId').value = requestId;
+        document.getElementById('currentPrice').value = price;
+
+        document.getElementById('setPriceButton').addEventListener('click', function() {
+            const newPrice = document.getElementById('newPrice').value;
+            if (newPrice) {
+                alert(`Цена установлена на ${newPrice}`);
+                // Here you would typically send the new price back to the server or perform some action
+            } else {
+                alert("Пожалуйста, введите новую цену.");
+            }
+        });
+    </script>
+</body>
+</html>
